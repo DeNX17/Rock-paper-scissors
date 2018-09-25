@@ -1,0 +1,43 @@
+.container {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0px 5px; 
+}
+
+body {
+    background-color: #ecf0f1;
+}
+
+img {
+    width: 170px;
+    height: auto;
+}
+
+.game {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0px;
+}
+
+.game div {
+    margin: 0px 15px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 100px;   
+    height: 45px; 
+    margin: 50px 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.lastResult {
+    text-align: center;
+    color: #2980b9;
+    font-size: 25px;
+}
