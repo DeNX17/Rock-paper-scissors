@@ -1,15 +1,18 @@
 .container {
     max-width: 1020px;
     margin: 0 auto;
-    padding: 0px 5px; 
+    padding: 0px 10px; 
 }
 
 body {
     background-color: #ecf0f1;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
 }
 
 img {
-    width: 170px;
+    max-width: 130px;
     height: auto;
 }
 
@@ -20,7 +23,7 @@ img {
 }
 
 .game div {
-    margin: 0px 15px;
+    margin: 0px 10px;
 }
 
 .buttons {
