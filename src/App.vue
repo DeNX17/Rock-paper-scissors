@@ -1,80 +1,43 @@
 <template>
 	<div class="container">
-		<p>Игры: {{ historyGame.length }} | Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
-		<p class="lastResult">{{ lastResult }}</p>
-		<div class="game" v-show="show">
-			<div class="my">
-				<img src="" alt="Не загрузилось" ref="MyImg">
-			</div>
-			<div class="enemy">
-				<img src="" alt="Не загрузилось" ref="EnemyImg">
-			</div>
+		<div class="navigation">
+			<ul>
+				<li v-for="item in modes" @click="pickMode(item.value)">{{ item.name }}</li>
+			</ul>
 		</div>
-		<div class="buttons">
-			<button v-for="item in items" @click="pick(item)">{{ item.name }}</button>
-		</div>
+		<app-type-standart v-if="show == 1"></app-type-standart>
+		<app-type-bt v-if="show == 2"></app-type-bt>
 	</div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
-import {mapActions} from 'vuex';
+
+import AppTypeStandart from './components/standart.vue';
+import AppTypeBt from './components/BO3.vue';
 
 export default {
 		data () {
 			return {
-				show: false,
+				show: 0
 			}
 		},
 		mounted(){
-			
+	
 		},
 		methods: {
-			randomInteger(min, max) {
-		    	var rand = min - 0.5 + Math.random() * (max - min + 1)
-		    	rand = Math.round(rand);
-		    	return rand;
-  			},
-  			pick(item){
-  				let computedPick = this.items[this.randomInteger(1, 3) - 1];
-
-  				this.show = true;
-  				this.$refs.MyImg.src = item.img;
-  				this.$refs.EnemyImg.src = computedPick.img;
-
-  				this.checkResult({
-  					player: item.name,
-  					comp: computedPick.name
-  				});
-  			},
-  			...mapActions('funcs', {
-  				checkResult: 'checkResult'
-  			})
+			pickMode(value){
+				this.show = value;
+			}
 		},
 		computed: {
 			...mapGetters('funcs', {
-				items: 'items',
-				historyGame: 'getHistoryGame'
-			}),
-			countStats(){		
-				let stats = {
-					wins: 0,
-					loses: 0
-				};
-
-				for (let i = 0; i < this.historyGame.length; i++){
-					if(this.historyGame[i] == "Победа"){
-						stats.wins++;
-					}
-					if(this.historyGame[i] == "Проигрыш"){
-						stats.loses++;
-					}
-				}
-				return stats;
-			},
-			lastResult(){
-				return this.historyGame[this.historyGame.length - 1];
-			}
+				modes: 'GameModes'
+			})
+		},
+		components: {
+			AppTypeStandart,
+			AppTypeBt
 		}
 	}
 

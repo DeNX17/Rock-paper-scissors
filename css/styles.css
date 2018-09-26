@@ -12,7 +12,7 @@ body {
 }
 
 img {
-    max-width: 130px;
+    max-width: 100%;
     height: auto;
 }
 
@@ -44,4 +44,18 @@ button {
     text-align: center;
     color: #2980b9;
     font-size: 25px;
+}
+
+ul {
+    display: flex;
+}
+
+ul li {
+    list-style-type: none;
+    padding: 0px 15px;
+    cursor: pointer;
+}
+
+.dNone {
+    display: none;
 }
