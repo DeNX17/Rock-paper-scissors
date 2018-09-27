@@ -59,16 +59,18 @@ export default {
 	},
 	mutations: {
 		checkResult(state, payload){
+			let result = '';
+
 			if(payload.player == "Камень"){
 				switch(payload.comp){
 					case "Камень":
-						state.historyGame.push("Ничья");
+						result = "Ничья";
 						break;
 					case "Бумага":
-						state.historyGame.push("Проигрыш");
+						result = "Проигрыш";
 						break;
 					case "Ножницы":
-						state.historyGame.push("Победа");
+						result = "Победа";
 						break;
 				}
 			}
@@ -76,13 +78,13 @@ export default {
 			if(payload.player == "Бумага"){
 				switch(payload.comp){
 					case "Камень":
-						state.historyGame.push("Победа");
+						result = "Победа";
 						break;
 					case "Бумага":
-						state.historyGame.push("Ничья");
+						result = "Ничья";
 						break;
 					case "Ножницы":
-						state.historyGame.push("Проигрыш");
+						result = "Проигрыш";
 						break;
 				}
 			}
@@ -90,19 +92,22 @@ export default {
 			if(payload.player == "Ножницы"){
 				switch(payload.comp){
 					case "Камень":
-						state.historyGame.push("Проигрыш");
+						result = "Проигрыш";
 						break;
 					case "Бумага":
-						state.historyGame.push("Победа");
+						result = "Победа";
 						break;
 					case "Ножницы":
-						state.historyGame.push("Ничья");
+						result = "Ничья";
 						break;
 				}
 			}
 
   			if(payload.mode == "BO3"){
-  				state.historyBO3.push(state.historyGame[state.historyGame.length - 1]);
+  				state.historyBO3.push(result);
+  			}
+  			if(payload.mode == 'Standart'){
+  				state.historyGame.push(result);
   			}
 		},
 		refrech(state){

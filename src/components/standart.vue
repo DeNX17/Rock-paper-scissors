@@ -45,6 +45,7 @@ export default {
   				this.scrImgEnemy = computedPick.img;
 
   				this.checkResult({
+  					mode: 'Standart',
   					player: item.name,
   					comp: computedPick.name
   				});
