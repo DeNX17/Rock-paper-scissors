@@ -1,7 +1,8 @@
 <template>
 	<div class="container">
-		<p v-show="show">Победы: {{ resultObj.wins }} / Поражения: {{ resultObj.loses }}</p>
+		<p >Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
 		<p>{{ resultBO3 }}</p>
+
 		<div class="game" v-show="show">
 			<div class="my">
 				<img :src="srcImgPlayer" alt="Не загрузилось">
@@ -10,7 +11,8 @@
 				<img :src="scrImgEnemy" alt="Не загрузилось">
 			</div>
 		</div>
-		<div class="buttons">
+		<button @click="refrech" v-if="btnShow">Refresh</button>
+		<div class="buttons" v-if="!btnShow">
 			<button v-for="item in items" @click="pick(item)">{{ item.name }}</button>
 		</div>
 	</div>
@@ -26,10 +28,8 @@ export default {
 				show: false,
 				srcImgPlayer: '',
 				scrImgEnemy: '',
-				resultObj: {
-					wins: 0,
-					loses: 0
-				}
+				btnShow: false
+
 			}
 		},
 		mounted(){
@@ -37,7 +37,8 @@ export default {
 		},
 		methods: {
 			...mapActions('funcs', {
-  				checkResult: 'checkResult'
+  				checkResult: 'checkResult',
+  				RefreshScore: 'refrech'
   			}),
 			randomInteger(min, max) {
 		    	var rand = min - 0.5 + Math.random() * (max - min + 1)
@@ -56,6 +57,10 @@ export default {
   					player: item.name,
   					comp: computedPick.name
   				});
+  			},
+  			refrech(){
+  				this.RefreshScore();
+  				this.btnShow = false;
   			}
 		},
 		computed: {
@@ -67,26 +72,14 @@ export default {
 				return this.historyGame[this.historyGame.length - 1];
 			},
 			resultBO3(){
-				let wins = 0;
-  				let loses = 0;
-				for (let i = 0; i < this.historyBO3.length; i++){
-  					if(this.historyBO3[i] == "Победа"){
-  						wins++;
-  					}
-  					if(this.historyBO3[i] == "Проигрыш"){
-  						loses++;
-  					}
-
-  					this.resultObj.wins = wins;
-  					this.resultObj.loses = loses;
-
-  					if(wins >= 2){
-  						return "Win";
-  					}
-  					if(loses >= 2){
-  						return "Lose";
-  					}
-  				}
+				if(this.historyBO3.wins >= 2){
+					this.btnShow = true;
+					return "You won";
+				}
+				if(this.historyBO3.loses >= 2){
+					this.btnShow = true;
+					return "You lose";
+				}
 			}
 		}
 	}

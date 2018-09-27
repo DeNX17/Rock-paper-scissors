@@ -41,7 +41,20 @@ export default {
 			return state.modes;
 		},
 		getHistoryBO3(state){
-			return state.historyBO3;
+			let obj = {
+				wins: 0,
+				loses: 0
+			}
+
+			for (let i = 0; i < state.historyBO3.length; i++){
+				if(state.historyBO3[i] == "Победа"){
+					obj.wins++;
+				}
+				if(state.historyBO3[i] == "Проигрыш"){
+					obj.loses++;
+				}
+			}
+			return obj;
 		}
 	},
 	mutations: {
@@ -91,11 +104,17 @@ export default {
   			if(payload.mode == "BO3"){
   				state.historyBO3.push(state.historyGame[state.historyGame.length - 1]);
   			}
+		},
+		refrech(state){
+			state.historyBO3 = [];
 		}
 	},
 	actions: {
 		checkResult(store, payload){
 			store.commit('checkResult', payload)
+		},
+		refrech(store){
+			store.commit('refrech');
 		}
 	}
 };
