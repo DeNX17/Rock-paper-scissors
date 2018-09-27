@@ -41,7 +41,7 @@ export default {
   				RefreshScore: 'refrech'
   			}),
 			randomInteger(min, max) {
-		    	var rand = min - 0.5 + Math.random() * (max - min + 1)
+		    	let rand = min - 0.5 + Math.random() * (max - min + 1)
 		    	rand = Math.round(rand);
 		    	return rand;
   			},
@@ -49,8 +49,8 @@ export default {
   				let computedPick = this.items[this.randomInteger(1, 3) - 1];
 
   				this.show = true;
-  				this.srcImgPlayer = item.img;
-  				this.scrImgEnemy = computedPick.img;
+  				this.srcImgPlayer = item.imgY;
+  				this.scrImgEnemy = computedPick.imgC;
 
   				this.checkResult({
   					mode: 'BO3',

@@ -4,15 +4,18 @@ export default {
 		items: [
 			{
 				name: 'Камень',
-				img: './img/Камень.png'
+				imgY: './img/YКамень.png',
+				imgC: './img/CКамень.png'
 			},
 			{
 				name: 'Бумага',
-				img: './img/Бумага.png'
+				imgY: './img/YБумага.png',
+				imgC: './img/CБумага.png'
 			},
 			{
 				name: 'Ножницы',
-				img: './img/Ножницы.png'
+				imgY: './img/YНожницы.png',
+				imgC: './img/CНожницы.png'
 			}
 		],
 		modes: [
