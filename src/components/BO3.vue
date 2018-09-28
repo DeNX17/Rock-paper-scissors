@@ -5,10 +5,14 @@
 
 		<div class="game" v-show="show">
 			<div class="my">
-				<img :src="srcImgPlayer" alt="Не загрузилось">
+				<transition name="player">
+					<img :src="srcImgPlayer" alt="Не загрузилось"  v-show="showField">
+				</transition>
 			</div>
 			<div class="enemy">
-				<img :src="scrImgEnemy" alt="Не загрузилось">
+				<transition name="comp">
+					<img :src="scrImgEnemy" alt="Не загрузилось"  v-show="showField">
+				</transition>
 			</div>
 		</div>
 		<button @click="refrech" v-if="btnShow">Refresh</button>
@@ -28,7 +32,8 @@ export default {
 				show: false,
 				srcImgPlayer: '',
 				scrImgEnemy: '',
-				btnShow: false
+				btnShow: false,
+				showField: false
 
 			}
 		},
@@ -46,17 +51,23 @@ export default {
 		    	return rand;
   			},
   			pick(item){
+  				this.showField = false;
+
+  				setTimeout(() => {
+  					this.srcImgPlayer = item.imgY;
+  					this.scrImgEnemy = computedPick.imgC;
+  					this.showField = true;
+
+  					this.checkResult({
+	  					mode: 'BO3',
+	  					player: item.name,
+	  					comp: computedPick.name
+  					});
+  				}, 100);
+
   				let computedPick = this.items[this.randomInteger(1, 3) - 1];
 
   				this.show = true;
-  				this.srcImgPlayer = item.imgY;
-  				this.scrImgEnemy = computedPick.imgC;
-
-  				this.checkResult({
-  					mode: 'BO3',
-  					player: item.name,
-  					comp: computedPick.name
-  				});
   			},
   			refrech(){
   				this.RefreshScore();
@@ -87,5 +98,5 @@ export default {
 </script>
 
 <style>
-	
+
 </style>

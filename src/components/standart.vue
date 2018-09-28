@@ -4,10 +4,14 @@
 		<p class="lastResult">{{ lastResult }}</p>
 		<div class="game" v-show="show">
 			<div class="my">
-				<img :src="srcImgPlayer" alt="Не загрузилось" ref="MyImg">
+				<transition name="player">
+					<img :src="srcImgPlayer" alt="Не загрузилось"  v-show="showField">
+				</transition>
 			</div>
 			<div class="enemy">
-				<img :src="scrImgEnemy" alt="Не загрузилось" ref="EnemyImg">
+				<transition name="comp">
+					<img :src="scrImgEnemy" alt="Не загрузилось"  v-show="showField">
+				</transition>
 			</div>
 		</div>
 		<div class="buttons">
@@ -25,7 +29,8 @@ export default {
 			return {
 				show: false,
 				srcImgPlayer: '',
-				scrImgEnemy: ''
+				scrImgEnemy: '',
+				showField: false
 			}
 		},
 		mounted(){
@@ -38,17 +43,23 @@ export default {
 		    	return rand;
   			},
   			pick(item){
+  				this.showField = false;
+
   				let computedPick = this.items[this.randomInteger(1, 3) - 1];
 
-  				this.show = true;
-  				this.srcImgPlayer = item.imgY;
-  				this.scrImgEnemy = computedPick.imgC;
+  				setTimeout(() => {
+  					this.srcImgPlayer = item.imgY;
+  					this.scrImgEnemy = computedPick.imgC;
+  					this.showField = true;
 
-  				this.checkResult({
-  					mode: 'Standart',
-  					player: item.name,
-  					comp: computedPick.name
-  				});
+  					this.checkResult({
+	  					mode: 'Standart',
+	  					player: item.name,
+	  					comp: computedPick.name
+  					});
+  				}, 100);
+
+  				this.show = true;
   			},
   			...mapActions('funcs', {
   				checkResult: 'checkResult'

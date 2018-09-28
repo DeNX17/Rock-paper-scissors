@@ -20,6 +20,7 @@ img {
     display: flex;
     justify-content: space-around;
     padding: 15px 0px;
+    height: 200px;
 }
 
 .game div {
@@ -58,4 +59,58 @@ ul li {
 
 .dNone {
     display: none;
+}
+
+
+.comp-enter {
+    opacity: 0;
+    transform: translateX(300px);
+}
+
+.comp-enter-active {
+    transition: all 0.5s;
+}
+
+.comp-enter-to {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.comp-leave {
+    opacity: 1;
+}
+
+.comp-leave-active {
+    transition: all 0.01s;
+}
+
+.comp-leave-to {
+    opacity: 0;
+}
+
+
+.player-enter {
+    opacity: 0;
+    transform: translateX(-300px);
+}
+
+.player-enter-active {
+    transition: all 0.5s;
+}
+
+.player-enter-to {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.player-leave {
+    opacity: 1;
+}
+
+.player-leave-active {
+    transition: all 0.01s;
+}
+
+.player-leave-to {
+    opacity: 0;
 }
