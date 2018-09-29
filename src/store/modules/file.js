@@ -110,11 +110,16 @@ export default {
   				state.historyBO3.push(result);
   			}
   			if(payload.mode == 'Standart'){
+  				console.log(state.historyGame);
   				state.historyGame.push(result);
+  				window.localStorage.setItem("history", state.historyGame);
   			}
 		},
 		refrech(state){
 			state.historyBO3 = [];
+		},
+		writeHistory(state, payload){
+			state.historyGame = payload;
 		}
 	},
 	actions: {
@@ -123,6 +128,9 @@ export default {
 		},
 		refrech(store){
 			store.commit('refrech');
+		},
+		writeHistory(store, payload){
+			store.commit('writeHistory', payload);
 		}
 	}
 };

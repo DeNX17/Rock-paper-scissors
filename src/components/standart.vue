@@ -34,7 +34,9 @@ export default {
 			}
 		},
 		mounted(){
-			
+			if(window.localStorage.getItem("history") !== null){
+				this.writeHistory(window.localStorage.getItem("history").split(','));
+			}
 		},
 		methods: {
 			randomInteger(min, max) {
@@ -62,7 +64,8 @@ export default {
   				this.show = true;
   			},
   			...mapActions('funcs', {
-  				checkResult: 'checkResult'
+  				checkResult: 'checkResult',
+  				writeHistory: 'writeHistory'
   			})
 		},
 		computed: {
