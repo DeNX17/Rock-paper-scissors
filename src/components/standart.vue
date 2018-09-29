@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<p>Игры: {{ historyGame.length }} | Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
-		<p class="lastResult">{{ lastResult }}</p>
+		<p class="lastResult" v-show="show">{{ lastResult }}</p>
 		<div class="game" v-show="show">
 			<div class="my">
 				<transition name="player">
