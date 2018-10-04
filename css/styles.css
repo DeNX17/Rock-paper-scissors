@@ -5,10 +5,19 @@
 }
 
 body {
-    background-color: #ecf0f1;
+    background-color: #EEEEEE;
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
+}
+
+p {
+    font-size: 18px;
+}
+
+button {
+    font-size: 18px;
+    background-color: #BDBDBD;
 }
 
 img {
@@ -47,14 +56,16 @@ button {
     font-size: 25px;
 }
 
-ul {
+ul.menu {
     display: flex;
+    justify-content: center;
 }
 
-ul li {
+ul.menu li {
     list-style-type: none;
     padding: 0px 15px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .dNone {
@@ -113,4 +124,8 @@ ul li {
 
 .player-leave-to {
     opacity: 0;
+}
+
+.imgGame {
+    border-radius: 100px;
 }

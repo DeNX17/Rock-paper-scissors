@@ -2,16 +2,15 @@
 	<div class="container">
 		<p >Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
 		<p>{{ resultBO3 }}</p>
-
 		<div class="game" v-show="show">
 			<div class="my">
 				<transition name="player">
-					<img :src="srcImgPlayer" alt="Не загрузилось"  v-show="showField">
+					<img :src="srcImgPlayer" alt="Не загрузилось"  v-show="showField" class="imgGame">
 				</transition>
 			</div>
 			<div class="enemy">
 				<transition name="comp">
-					<img :src="scrImgEnemy" alt="Не загрузилось"  v-show="showField">
+					<img :src="scrImgEnemy" alt="Не загрузилось"  v-show="showField" class="imgGame">
 				</transition>
 			</div>
 		</div>

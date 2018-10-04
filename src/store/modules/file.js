@@ -110,7 +110,6 @@ export default {
   				state.historyBO3.push(result);
   			}
   			if(payload.mode == 'Standart'){
-  				console.log(state.historyGame);
   				state.historyGame.push(result);
   				window.localStorage.setItem("history", state.historyGame);
   			}
