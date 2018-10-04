@@ -5,6 +5,14 @@
 			<span class="close_button" @click="closeSettings">X</span>
 			<ul class="settings">
 				<li @click="reset">Reset history</li>
+				<li>
+					<label>Цвет фона</label>
+					<select ref="select" @change="logs">
+						<option value="black">Черный</option>
+	 					<option value="white">Белый</option>
+	 					<option value="#EEEEEE">Серый</option>
+					</select>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -17,6 +25,9 @@
 
 			}
 		},
+		mounted(){
+			
+		},
 		methods: {
 			reset(){
 				window.localStorage.removeItem("history");
@@ -24,8 +35,10 @@
 			},
 			closeSettings(){
 				this.$emit('closeSettings');
+			},
+			logs(){
+				document.body.style.backgroundColor = this.$refs.select.value;
 			}
-
 		}
 
 	}
