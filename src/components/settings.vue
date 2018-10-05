@@ -4,13 +4,13 @@
 		<div class="blockSettings">
 			<span class="close_button" @click="closeSettings">X</span>
 			<ul class="settings">
-				<li @click="reset">Reset history</li>
+				<li @click="resetHistory">Reset history</li>
 				<li>
 					<label>Цвет фона</label>
-					<select ref="select" @change="logs">
-						<option value="black">Черный</option>
-	 					<option value="white">Белый</option>
-	 					<option value="#EEEEEE">Серый</option>
+					<select @change="changeColorBG">
+						<option v-for="item in arrColorBG" :value="item.value">
+							{{ item.name }}
+						</option>
 					</select>
 				</li>
 			</ul>
@@ -19,6 +19,9 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+import {mapActions} from 'vuex';
+
 	export default {
 		data(){
 			return {
@@ -29,16 +32,18 @@
 			
 		},
 		methods: {
-			reset(){
-				window.localStorage.removeItem("history");
-				window.location.reload();
-			},
+			...mapActions('settings', {
+				changeColorBG: 'changeColorBG',
+				resetHistory: 'resetHistory'
+			}),
 			closeSettings(){
 				this.$emit('closeSettings');
-			},
-			logs(){
-				document.body.style.backgroundColor = this.$refs.select.value;
 			}
+		},
+		computed: {
+			...mapGetters('settings', {
+				arrColorBG: 'arrColorBG'
+			})
 		}
 
 	}
@@ -83,5 +88,13 @@
 	ul.settings li {
 		cursor: pointer;
 		font-size: 19px;
+		padding: 7px;
+		margin: 17px 0px;
+	}
+
+	.example {
+		width: 10px;
+		height: 10px;
+		display: block;
 	}
 </style>

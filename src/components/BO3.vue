@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<p >Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
-		<p>{{ resultBO3 }}</p>
+		<p class="text">Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
+		<p class="text resultBO3" ref="resultBO3">{{ resultBO3 }}</p>
 		<div class="game" v-show="show">
 			<div class="my">
 				<transition name="player">
@@ -33,14 +33,13 @@ export default {
 				scrImgEnemy: '',
 				btnShow: false,
 				showField: false
-
 			}
 		},
 		mounted(){
 			
 		},
 		methods: {
-			...mapActions('funcs', {
+			...mapActions('logics', {
   				checkResult: 'checkResult',
   				RefreshScore: 'refrech'
   			}),
@@ -74,7 +73,7 @@ export default {
   			}
 		},
 		computed: {
-			...mapGetters('funcs', {
+			...mapGetters('logics', {
 				items: 'items',
 				historyBO3: 'getHistoryBO3'
 			}),
@@ -84,10 +83,12 @@ export default {
 			resultBO3(){
 				if(this.historyBO3.wins >= 2){
 					this.btnShow = true;
+					this.$refs.resultBO3.style.opacity = 1;
 					return "You won";
 				}
 				if(this.historyBO3.loses >= 2){
 					this.btnShow = true;
+					this.$refs.resultBO3.style.opacity = 1;
 					return "You lose";
 				}
 			}
@@ -96,6 +97,10 @@ export default {
 
 </script>
 
-<style>
-
+<style scoped>
+	.resultBO3 {
+		opacity: 0;
+		height: 10px;
+		width: 100%;
+	}
 </style>

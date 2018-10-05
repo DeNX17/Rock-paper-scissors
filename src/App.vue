@@ -2,8 +2,8 @@
 	<div class="container">
 		<div class="navigation">
 			<ul class="menu">
-				<li v-for="item in modes" @click="pickMode(item.value)">{{ item.name }}</li>
-				<li @click="showSettings = true">Settings</li>
+				<li v-for="item in modes" @click="pickMode(item.value)" class="text">{{ item.name }}</li>
+				<li @click="showSettings = true" class="text">Settings</li>
 			</ul>
 		</div>
 		<app-type-standart v-if="show == 1"></app-type-standart>
@@ -38,7 +38,7 @@ export default {
 			}
 		},
 		computed: {
-			...mapGetters('funcs', {
+			...mapGetters('logics', {
 				modes: 'GameModes'
 			})
 		},
