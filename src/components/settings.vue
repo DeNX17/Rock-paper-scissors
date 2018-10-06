@@ -9,7 +9,8 @@
 					<label>Цвет фона</label>
 					<select @change="changeColorBG">
 						<option v-for="item in arrColorBG" :value="item.value">
-							{{ item.name }}
+							{{ item.name }} | <div 	class="example" 
+													:style="'background-color:' + item.value"></div>
 						</option>
 					</select>
 				</li>
@@ -58,27 +59,30 @@ import {mapActions} from 'vuex';
 		height: 100%;
 		background-color: black;
 		opacity: 0.7;
+		z-index: 10;
 	}
 
 	.blockSettings {
 		position: fixed;
-		width: 70%;
-		height: 100%;
+		width: 250px; 
+    	height: 350px;
 		top: 45px;
-		left: 15%;
+		left: 9%;
 		background-color: #34ace0;
 		opacity: 1;
 		padding: 25px;
+		z-index: 11;
 	}
 
 	.close_button {
 		width: 21px;
 		height: 21px;
 		position: absolute;
-		top: 10px;
-		right: 10px;
+		top: 25px;
+		right: 10%;
 		cursor: pointer;
 		display: block;
+
 	}
 
 	ul.settings {
@@ -93,8 +97,6 @@ import {mapActions} from 'vuex';
 	}
 
 	.example {
-		width: 10px;
-		height: 10px;
-		display: block;
+		width: 100%;
 	}
 </style>

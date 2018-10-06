@@ -22,7 +22,7 @@ import AppSetting from './components/settings.vue';
 export default {
 		data () {
 			return {
-				show: 0,
+				show: 1,
 				showSettings: false
 			}
 		},
