@@ -27,12 +27,14 @@ export default {
 	},
 	mutations: {
 		changeColorBG(state, payload){
+			state.colorBG = payload;
 			document.body.style.backgroundColor = payload;
+			window.localStorage.setItem("BGColor", payload);
 		}
 	},
 	actions: {
 		changeColorBG(store, payload){
-			store.commit('changeColorBG', payload.target.value);
+			store.commit('changeColorBG', payload);
 		},
 		resetHistory(store){
 			window.localStorage.removeItem("history");

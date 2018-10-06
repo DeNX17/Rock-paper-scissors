@@ -14,6 +14,7 @@
 
 <script>
 import {mapGetters} from 'vuex';
+import {mapActions} from 'vuex';
 
 import AppTypeStandart from './components/standart.vue';
 import AppTypeBt from './components/BO3.vue';
@@ -27,9 +28,17 @@ export default {
 			}
 		},
 		mounted(){
-			
+			if(window.localStorage.getItem("BGColor") !== null){
+				let color = window.localStorage.getItem("BGColor");
+				document.body.style.backgroundColor = color;
+				
+				this.changeColorBG(color);
+			}
 		},
 		methods: {
+			...mapActions('settings', {
+				changeColorBG: 'changeColorBG'
+			}),
 			pickMode(value){
 				this.show = value;
 			},

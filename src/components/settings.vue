@@ -7,10 +7,9 @@
 				<li @click="resetHistory">Reset history</li>
 				<li>
 					<label>Цвет фона</label>
-					<select @change="changeColorBG">
+					<select @change="changeColorBG($event.target.value)" :value="colorBG">
 						<option v-for="item in arrColorBG" :value="item.value">
-							{{ item.name }} | <div 	class="example" 
-													:style="'background-color:' + item.value"></div>
+							{{ item.name }}
 						</option>
 					</select>
 				</li>
@@ -43,7 +42,8 @@ import {mapActions} from 'vuex';
 		},
 		computed: {
 			...mapGetters('settings', {
-				arrColorBG: 'arrColorBG'
+				arrColorBG: 'arrColorBG',
+				colorBG: 'colorBG'
 			})
 		}
 
@@ -68,7 +68,7 @@ import {mapActions} from 'vuex';
     	height: 350px;
 		top: 45px;
 		left: 9%;
-		background-color: #34ace0;
+		background-color: #2980b9;
 		opacity: 1;
 		padding: 25px;
 		z-index: 11;
