@@ -80,10 +80,10 @@ export default {
 				};
 
 				for (let i = 0; i < this.historyGame.length; i++){
-					if(this.historyGame[i] == "Победа"){
+					if(this.historyGame[i] == "Victory"){
 						stats.wins++;
 					}
-					if(this.historyGame[i] == "Проигрыш"){
+					if(this.historyGame[i] == "Defeat"){
 						stats.loses++;
 					}
 				}

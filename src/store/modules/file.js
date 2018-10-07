@@ -50,10 +50,10 @@ export default {
 			}
 
 			for (let i = 0; i < state.historyBO3.length; i++){
-				if(state.historyBO3[i] == "Победа"){
+				if(state.historyBO3[i] == "Victory"){
 					obj.wins++;
 				}
-				if(state.historyBO3[i] == "Проигрыш"){
+				if(state.historyBO3[i] == "Defeat"){
 					obj.loses++;
 				}
 			}
@@ -67,13 +67,13 @@ export default {
 			if(payload.player == "Камень"){
 				switch(payload.comp){
 					case "Камень":
-						result = "Ничья";
+						result = "Draw";
 						break;
 					case "Бумага":
-						result = "Проигрыш";
+						result = "Defeat";
 						break;
 					case "Ножницы":
-						result = "Победа";
+						result = "Victory";
 						break;
 				}
 			}
@@ -81,13 +81,13 @@ export default {
 			if(payload.player == "Бумага"){
 				switch(payload.comp){
 					case "Камень":
-						result = "Победа";
+						result = "Victory";
 						break;
 					case "Бумага":
-						result = "Ничья";
+						result = "Draw";
 						break;
 					case "Ножницы":
-						result = "Проигрыш";
+						result = "Defeat";
 						break;
 				}
 			}
@@ -95,13 +95,13 @@ export default {
 			if(payload.player == "Ножницы"){
 				switch(payload.comp){
 					case "Камень":
-						result = "Проигрыш";
+						result = "Defeat";
 						break;
 					case "Бумага":
-						result = "Победа";
+						result = "Victory";
 						break;
 					case "Ножницы":
-						result = "Ничья";
+						result = "Draw";
 						break;
 				}
 			}
