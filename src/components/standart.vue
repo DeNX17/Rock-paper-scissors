@@ -7,12 +7,10 @@
 				  :srcImgPlayer="srcImgPlayer"
 				  :scrImgEnemy="scrImgEnemy"
 				  :showField="showField"
+				  :mode="mode"
+				  @pick="pick"
 				  >
 		</app-game>
-
-		<div class="buttons">
-			<button v-for="item in items" @click="pick(item)">{{ item.name }}</button>
-		</div>
 	</div>
 </template>
 
@@ -28,7 +26,8 @@ export default {
 				show: false,
 				srcImgPlayer: '',
 				scrImgEnemy: '',
-				showField: false
+				showField: false,
+				mode: 'Standart'
 			}
 		},
 		mounted(){
@@ -45,19 +44,11 @@ export default {
   			pick(item){
   				this.showField = false;
 
-  				let computedPick = this.items[this.randomInteger(1, 3) - 1];
-
   				setTimeout(() => {
-  					this.srcImgPlayer = item.imgY;
-  					this.scrImgEnemy = computedPick.imgC;
+  					this.srcImgPlayer = item.imgPlayer;
+  					this.scrImgEnemy = item.imgComp;
   					this.showField = true;
-
-  					this.checkResult({
-	  					mode: 'Standart',
-	  					player: item.name,
-	  					comp: computedPick.name
-  					});
-  				}, 100);
+  				}, 100)
 
   				this.show = true;
   			},

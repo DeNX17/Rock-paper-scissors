@@ -12,6 +12,12 @@
 				</transition>
 			</div>
 		</div>
+
+		<div class="buttons">
+			<button v-for="item in items" @click="pick(item)" v-show="!btnShow">
+				{{ item.name }}
+			</button>
+		</div>
 	</div>
 </template>
 
@@ -22,9 +28,11 @@
 	export default {
 		props: {
 			show: Boolean,
-			srcImgPlayer: null,
-			scrImgEnemy: null,
+			srcImgPlayer: String,
+			scrImgEnemy: String,
 			showField: Boolean,
+			mode: String,
+			btnShow: Boolean
 		},
 		data(){
 			return {
@@ -39,6 +47,20 @@
 		    	let rand = min - 0.5 + Math.random() * (max - min + 1)
 		    	rand = Math.round(rand);
 		    	return rand;
+  			},
+  			pick(item){
+  				let computedPick = this.items[this.randomInteger(1, 3) - 1];
+  	
+  				this.$emit('pick', {
+  					imgPlayer: item.imgY,
+  					imgComp: computedPick.imgC
+  				});
+
+  				this.checkResult({
+  					mode: this.mode,
+  					player: item.name,
+  					comp: computedPick.name
+				});
   			}
 		},
 		computed: {

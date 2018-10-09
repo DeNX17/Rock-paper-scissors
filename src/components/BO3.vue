@@ -7,14 +7,12 @@
 				  :srcImgPlayer="srcImgPlayer"
 				  :scrImgEnemy="scrImgEnemy"
 				  :showField="showField"
+				  :mode="mode"
+				  :btnShow="btnShow"
+				  @pick="pick"
 				  >
 		</app-game>
-		
-		<div class="buttons">
-			<button v-for="item in items" @click="pick(item)" v-if="!btnShow">
-				{{ item.name }}
-			</button>
-		</div>
+
 		<button @click="refrech" v-if="btnShow">Refresh</button>
 		
 	</div>
@@ -52,19 +50,12 @@ export default {
   			},
   			pick(item){
   				this.showField = false;
-  				let computedPick = this.items[this.randomInteger(1, 3) - 1];
 
   				setTimeout(() => {
-  					this.srcImgPlayer = item.imgY;
-  					this.scrImgEnemy = computedPick.imgC;
+  					this.srcImgPlayer = item.imgPlayer;
+  					this.scrImgEnemy = item.imgComp;
   					this.showField = true;
-
-  					this.checkResult({
-	  					mode: 'BO3',
-	  					player: item.name,
-	  					comp: computedPick.name
-  					});
-  				}, 100);
+  				}, 100)
 
   				this.show = true;
   			},
