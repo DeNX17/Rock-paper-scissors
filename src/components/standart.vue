@@ -2,18 +2,14 @@
 	<div class="container">
 		<p class="text" >Игры: {{ historyGame.length }} | Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
 		<p class="lastResult" v-show="show">{{ lastResult }}</p>
-		<div class="game" v-show="show">
-			<div class="my">
-				<transition name="player">
-					<img :src="srcImgPlayer" alt="Не загрузилось"  v-show="showField" class="imgGame">
-				</transition>
-			</div>
-			<div class="enemy">
-				<transition name="comp">
-					<img :src="scrImgEnemy" alt="Не загрузилось"  v-show="showField" class="imgGame">
-				</transition>
-			</div>
-		</div>
+		
+		<app-game :show="show"
+				  :srcImgPlayer="srcImgPlayer"
+				  :scrImgEnemy="scrImgEnemy"
+				  :showField="showField"
+				  >
+		</app-game>
+
 		<div class="buttons">
 			<button v-for="item in items" @click="pick(item)">{{ item.name }}</button>
 		</div>
@@ -23,6 +19,8 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
+
+import AppGame from '../components/game.vue';
 
 export default {
 		data () {
@@ -63,13 +61,13 @@ export default {
 
   				this.show = true;
   			},
-  			...mapActions('logics', {
+  			...mapActions('logic', {
   				checkResult: 'checkResult',
   				writeHistory: 'writeHistory'
   			})
 		},
 		computed: {
-			...mapGetters('logics', {
+			...mapGetters('logic', {
 				items: 'items',
 				historyGame: 'getHistoryGame'
 			}),
@@ -92,6 +90,9 @@ export default {
 			lastResult(){
 				return this.historyGame[this.historyGame.length - 1];
 			}
+		},
+		components: {
+			AppGame
 		}
 	}
 

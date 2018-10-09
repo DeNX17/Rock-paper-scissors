@@ -29,9 +29,7 @@ export default {
 			}
 		],
 		historyGame: [],
-		historyBO3: [],
-		wins: 0,
-		loses: 0
+		historyBO3: []
 	},
 	getters: {
 		items(state){

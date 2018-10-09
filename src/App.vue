@@ -47,7 +47,7 @@ export default {
 			}
 		},
 		computed: {
-			...mapGetters('logics', {
+			...mapGetters('logic', {
 				modes: 'GameModes'
 			})
 		},

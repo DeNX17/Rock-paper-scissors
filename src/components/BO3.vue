@@ -2,28 +2,29 @@
 	<div class="container">
 		<p class="text">Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
 		<p class="text resultBO3" ref="resultBO3">{{ resultBO3 }}</p>
-		<div class="game" v-show="show">
-			<div class="my">
-				<transition name="player">
-					<img :src="srcImgPlayer" alt="Не загрузилось"  v-show="showField" class="imgGame">
-				</transition>
-			</div>
-			<div class="enemy">
-				<transition name="comp">
-					<img :src="scrImgEnemy" alt="Не загрузилось"  v-show="showField" class="imgGame">
-				</transition>
-			</div>
+
+		<app-game :show="show"
+				  :srcImgPlayer="srcImgPlayer"
+				  :scrImgEnemy="scrImgEnemy"
+				  :showField="showField"
+				  >
+		</app-game>
+		
+		<div class="buttons">
+			<button v-for="item in items" @click="pick(item)" v-if="!btnShow">
+				{{ item.name }}
+			</button>
 		</div>
 		<button @click="refrech" v-if="btnShow">Refresh</button>
-		<div class="buttons" v-if="!btnShow">
-			<button v-for="item in items" @click="pick(item)">{{ item.name }}</button>
-		</div>
+		
 	</div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
+
+import AppGame from '../components/game.vue';
 
 export default {
 		data () {
@@ -32,14 +33,15 @@ export default {
 				srcImgPlayer: '',
 				scrImgEnemy: '',
 				btnShow: false,
-				showField: false
+				showField: false,
+				mode: 'BO3'
 			}
 		},
 		mounted(){
 			
 		},
 		methods: {
-			...mapActions('logics', {
+			...mapActions('logic', {
   				checkResult: 'checkResult',
   				RefreshScore: 'refrech'
   			}),
@@ -50,6 +52,7 @@ export default {
   			},
   			pick(item){
   				this.showField = false;
+  				let computedPick = this.items[this.randomInteger(1, 3) - 1];
 
   				setTimeout(() => {
   					this.srcImgPlayer = item.imgY;
@@ -63,8 +66,6 @@ export default {
   					});
   				}, 100);
 
-  				let computedPick = this.items[this.randomInteger(1, 3) - 1];
-
   				this.show = true;
   			},
   			refrech(){
@@ -73,7 +74,7 @@ export default {
   			}
 		},
 		computed: {
-			...mapGetters('logics', {
+			...mapGetters('logic', {
 				items: 'items',
 				historyBO3: 'getHistoryBO3'
 			}),
@@ -92,6 +93,9 @@ export default {
 					return "You lose";
 				}
 			}
+		},
+		components: {
+			AppGame
 		}
 	}
 
