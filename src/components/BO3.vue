@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div>
 		<p class="interfaceText">Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
 		<p class="text resultBO3" ref="resultBO3">{{ resultBO3 }}</p>
 

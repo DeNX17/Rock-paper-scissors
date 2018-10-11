@@ -1,6 +1,8 @@
 <template>
-	<div class="container">
-		<p class="interfaceText" >Игры: {{ historyGame.length }} | Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
+	<div>
+		<p class="interfaceText" >Игры: {{ historyGame.length }} 
+		<br> 
+		Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
 		<p class="lastResult" v-show="show">{{ lastResult }}</p>
 		
 		<app-game :show="show"
