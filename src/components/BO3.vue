@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<p class="text">Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
+		<p class="interfaceText">Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
 		<p class="text resultBO3" ref="resultBO3">{{ resultBO3 }}</p>
 
 		<app-game :show="show"
@@ -43,11 +43,6 @@ export default {
   				checkResult: 'checkResult',
   				RefreshScore: 'refrech'
   			}),
-			randomInteger(min, max) {
-		    	let rand = min - 0.5 + Math.random() * (max - min + 1)
-		    	rand = Math.round(rand);
-		    	return rand;
-  			},
   			pick(item){
   				this.showField = false;
 

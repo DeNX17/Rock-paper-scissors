@@ -42,7 +42,7 @@ import {mapActions} from 'vuex';
 		},
 		computed: {
 			...mapGetters('settings', {
-				arrColorBG: 'arrColorBG'		
+				arrColorBG: 'arrColorBG'
 			}),
 			colorBG(){
 				return window.localStorage.getItem("BGColor");

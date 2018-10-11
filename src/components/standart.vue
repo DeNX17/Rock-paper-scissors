@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<p class="text" >Игры: {{ historyGame.length }} | Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
+		<p class="interfaceText" >Игры: {{ historyGame.length }} | Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
 		<p class="lastResult" v-show="show">{{ lastResult }}</p>
 		
 		<app-game :show="show"
@@ -36,11 +36,6 @@ export default {
 			}
 		},
 		methods: {
-			randomInteger(min, max) {
-		    	let rand = min - 0.5 + Math.random() * (max - min + 1)
-		    	rand = Math.round(rand);
-		    	return rand;
-  			},
   			pick(item){
   				this.showField = false;
 

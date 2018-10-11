@@ -2,12 +2,12 @@
 	<div class="container">
 		<div class="navigation">
 			<ul class="menu">
-				<li v-for="item in modes" @click="pickMode(item.value)" class="text">{{ item.name }}</li>
-				<li @click="showSettings = true" class="text">Settings</li>
+				<li v-for="item in modes" @click="pickMode(item.value)" class="interfaceText">{{ item.name }}</li>
+				<li @click="showSettings = true" class="interfaceText">Settings</li>
 			</ul>
 		</div>
 		<app-type-standart v-if="show == 1"></app-type-standart>
-		<app-type-bt v-if="show == 2"></app-type-bt>
+		<app-type-three v-if="show == 2"></app-type-three>
 		<app-setting v-show="showSettings" @closeSettings="onCloseSettings"></app-setting>
 	</div>
 </template>
@@ -17,7 +17,7 @@ import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
 
 import AppTypeStandart from './components/standart.vue';
-import AppTypeBt from './components/BO3.vue';
+import AppTypeThree from './components/BO3.vue';
 import AppSetting from './components/settings.vue';
 
 export default {
@@ -53,7 +53,7 @@ export default {
 		},
 		components: {
 			AppTypeStandart,
-			AppTypeBt,
+			AppTypeThree,
 			AppSetting
 		}
 	}
