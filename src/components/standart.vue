@@ -1,8 +1,8 @@
 <template>
 	<div>
-		<p class="interfaceText" >Игры: {{ historyGame.length }} 
+		<p class="interfaceText" >Games: {{ historyGame.length }} 
 		<br> 
-		Победы: {{ countStats.wins }} | Поражения: {{ countStats.loses }} </p>
+		VICTORIES: {{ countStats.wins }} | DEFEATS: {{ countStats.loses }} </p>
 		<p class="lastResult" v-show="show">{{ lastResult }}</p>
 		
 		<app-game :show="show"
@@ -33,6 +33,7 @@ export default {
 			}
 		},
 		mounted(){
+			// Сохранение истории в локальное хранилеще
 			if(window.localStorage.getItem("history") !== null){
 				this.writeHistory(window.localStorage.getItem("history").split(','));
 			}
@@ -40,7 +41,7 @@ export default {
 		methods: {
   			pick(item){
   				this.showField = false;
-
+					// Плавная анимация появления картинок
   				setTimeout(() => {
   					this.srcImgPlayer = item.imgPlayer;
   					this.scrImgEnemy = item.imgComp;
@@ -76,6 +77,7 @@ export default {
 				return stats;
 			},
 			lastResult(){
+				// Получение последнего результата игры
 				return this.historyGame[this.historyGame.length - 1];
 			}
 		},

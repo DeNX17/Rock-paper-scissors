@@ -19,9 +19,11 @@ export default {
 	},
 	getters: {
 		colorBG(state){
+			// Получение текующего цвета
 			return state.colorBG;
 		},
 		arrColorBG(state){
+			// Получение списка всех цветов
 			return state.arrColorBG;
 		}
 	},
@@ -36,7 +38,7 @@ export default {
 		changeColorBG(store, payload){
 			store.commit('changeColorBG', payload);
 		},
-		resetHistory(store){
+		resetHistory(store){ // Удаление истории игр из локального хранилища
 			window.localStorage.removeItem("history");
 			window.location.reload();
 		}

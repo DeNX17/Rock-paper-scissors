@@ -28,7 +28,7 @@ export default {
 				showSettings: false
 			}
 		},
-		mounted(){
+		mounted(){ // Получение из локального хранилища цвета фона
 			if(window.localStorage.getItem("BGColor") !== null){
 				let color = window.localStorage.getItem("BGColor");
 				document.body.style.backgroundColor = color;

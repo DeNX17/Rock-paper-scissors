@@ -13,7 +13,7 @@
 				  >
 		</app-game>
 
-		<button @click="refrech" v-if="btnShow">Refresh</button>
+		<button @click="refresh" v-if="btnShow">Refresh</button>
 		
 	</div>
 </template>
@@ -35,13 +35,10 @@ export default {
 				mode: 'BO3'
 			}
 		},
-		mounted(){
-			
-		},
 		methods: {
 			...mapActions('logic', {
   				checkResult: 'checkResult',
-  				RefreshScore: 'refrech'
+  				RefreshScore: 'refresh'
   			}),
   			pick(item){
   				this.showField = false;
@@ -54,7 +51,8 @@ export default {
 
   				this.show = true;
   			},
-  			refrech(){
+  			refresh() {
+          // Обновление счета в
   				this.RefreshScore();
   				this.btnShow = false;
   			}
@@ -64,10 +62,8 @@ export default {
 				items: 'items',
 				historyBO3: 'getHistoryBO3'
 			}),
-			lastResult(){
-				return this.historyGame[this.historyGame.length - 1];
-			},
 			resultBO3(){
+        // Определение победителя в игре
 				if(this.historyBO3.wins >= 2){
 					this.btnShow = true;
 					this.$refs.resultBO3.style.opacity = 1;

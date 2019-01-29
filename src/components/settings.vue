@@ -87,10 +87,6 @@ import {mapActions} from 'vuex';
 
 	}
 
-	ul.settings {
-
-	}
-
 	ul.settings li {
 		cursor: pointer;
 		font-size: 19px;

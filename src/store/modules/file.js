@@ -3,19 +3,19 @@ export default {
 	state: {
 		items: [
 			{
-				name: 'Камень',
-				imgY: './img/YКамень.png',
-				imgC: './img/CКамень.png'
+				name: 'Rock',
+				imgY: './img/YRock.png',
+				imgC: './img/CRock.png'
 			},
 			{
-				name: 'Бумага',
-				imgY: './img/YБумага.png',
-				imgC: './img/CБумага.png'
+				name: 'Paper',
+				imgY: './img/YPaper.png',
+				imgC: './img/CPaper.png'
 			},
 			{
-				name: 'Ножницы',
-				imgY: './img/YНожницы.png',
-				imgC: './img/CНожницы.png'
+				name: 'Scissors',
+				imgY: './img/YScissors.png',
+				imgC: './img/CScissors.png'
 			}
 		],
 		modes: [
@@ -32,16 +32,16 @@ export default {
 		historyBO3: []
 	},
 	getters: {
-		items(state){
+		items(state) {
 			return state.items;
 		},
-		getHistoryGame(state){
+		getHistoryGame(state) {
 			return state.historyGame;
 		},
-		GameModes(state){
+		GameModes(state) {
 			return state.modes;
 		},
-		getHistoryBO3(state){
+		getHistoryBO3(state) {
 			let obj = {
 				wins: 0,
 				loses: 0
@@ -59,74 +59,74 @@ export default {
 		}
 	},
 	mutations: {
-		checkResult(state, payload){
+		checkResult(state, payload) {
 			let result = '';
 
-			if(payload.player == "Камень"){
+			if(payload.player == "Rock"){
 				switch(payload.comp){
-					case "Камень":
+					case "Rock":
 						result = "Draw";
 						break;
-					case "Бумага":
+					case "Paper":
 						result = "Defeat";
 						break;
-					case "Ножницы":
+					case "Scissors":
 						result = "Victory";
 						break;
 				}
 			}
 
-			if(payload.player == "Бумага"){
+			if(payload.player == "Paper"){
 				switch(payload.comp){
-					case "Камень":
+					case "Rock":
 						result = "Victory";
 						break;
-					case "Бумага":
+					case "Paper":
 						result = "Draw";
 						break;
-					case "Ножницы":
+					case "Scissors":
 						result = "Defeat";
 						break;
 				}
 			}
 
-			if(payload.player == "Ножницы"){
+			if(payload.player == "Scissors"){
 				switch(payload.comp){
-					case "Камень":
+					case "Rock":
 						result = "Defeat";
 						break;
-					case "Бумага":
+					case "Paper":
 						result = "Victory";
 						break;
-					case "Ножницы":
+					case "Scissors":
 						result = "Draw";
 						break;
 				}
 			}
 
-  			if(payload.mode == "BO3"){
+  			if(payload.mode === "BO3") {
   				state.historyBO3.push(result);
   			}
-  			if(payload.mode == 'Standart'){
+  			if(payload.mode === 'Standart') {
   				state.historyGame.push(result);
   				window.localStorage.setItem("history", state.historyGame);
   			}
 		},
-		refrech(state){
+		refresh(state) {
 			state.historyBO3 = [];
 		},
-		writeHistory(state, payload){
+		writeHistory(state, payload) {
 			state.historyGame = payload;
 		}
 	},
 	actions: {
-		checkResult(store, payload){
+		checkResult(store, payload) {
 			store.commit('checkResult', payload)
 		},
-		refrech(store){
-			store.commit('refrech');
+		refresh(store) {
+			store.commit('refresh');
 		},
-		writeHistory(store, payload){
+		writeHistory(store, payload) {
 			store.commit('writeHistory', payload);
 		}
 	}

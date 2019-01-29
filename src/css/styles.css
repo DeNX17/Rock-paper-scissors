@@ -5,7 +5,6 @@
 }
 
 body {
-    /*background-color: #EEEEEE;*/
     background-color: black;
     border: 3px solid red;
     overflow: hidden;
@@ -14,26 +13,9 @@ body {
     box-sizing: border-box;
 }
 
-button {
-    font-size: 18px;
-    background-color: #BDBDBD;
-    /*background-color: #273439;*/
-}
-
 img {
     max-width: 100%;
     height: auto;
-}
-
-.game {
-    display: flex;
-    justify-content: space-around;
-    padding: 15px 0px;
-    height: 200px;
-}
-
-.game div {
-    margin: 0px 10px;
 }
 
 .buttons {
@@ -48,6 +30,8 @@ button {
     border: none;
     border-radius: 10px;
     outline: none;
+    font-size: 18px;
+    background-color: #BDBDBD;
 }
 
 .lastResult {
