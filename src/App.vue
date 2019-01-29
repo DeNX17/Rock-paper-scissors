@@ -8,7 +8,7 @@
 		</div>
 		<app-type-standart v-if="show == 1"></app-type-standart>
 		<app-type-three v-if="show == 2"></app-type-three>
-		<app-setting v-show="showSettings" @closeSettings="onCloseSettings"></app-setting>
+		<app-setting v-show="showSettings" @closeSettings="onCloseSettings"></app-setting> 
 	</div>
 </template>
 
@@ -19,6 +19,7 @@ import {mapActions} from 'vuex';
 import AppTypeStandart from './components/standart.vue';
 import AppTypeThree from './components/BO3.vue';
 import AppSetting from './components/settings.vue';
+
 
 export default {
 		data () {

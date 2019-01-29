@@ -1,0 +1,134 @@
+.container {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0px 10px; 
+}
+
+body {
+    background-color: #EEEEEE;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+button {
+    font-size: 18px;
+    background-color: #BDBDBD;
+    /*background-color: #273439;*/
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.game {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0px;
+    height: 200px;
+}
+
+.game div {
+    margin: 0px 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 100px;   
+    height: 45px; 
+    margin: 50px 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+}
+
+.lastResult {
+    text-align: center;
+    color: #2980b9;
+    font-size: 25px;
+}
+
+ul.menu {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+ul.menu li {
+    list-style-type: none;
+    padding: 0px 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dNone {
+    display: none;
+}
+
+.comp-enter {
+    opacity: 0;
+    transform: translateX(300px);
+}
+
+.comp-enter-active {
+    transition: all 0.5s;
+}
+
+.comp-enter-to {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.comp-leave {
+    opacity: 1;
+}
+
+.comp-leave-active {
+    transition: all 0.01s;
+}
+
+.comp-leave-to {
+    opacity: 0;
+}
+
+
+.player-enter {
+    opacity: 0;
+    transform: translateX(-300px);
+}
+
+.player-enter-active {
+    transition: all 0.5s;
+}
+
+.player-enter-to {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.player-leave {
+    opacity: 1;
+}
+
+.player-leave-active {
+    transition: all 0.01s;
+}
+
+.player-leave-to {
+    opacity: 0;
+}
+
+.imgGame {
+    border-radius: 100px;
+}
+
+.interfaceText {
+    font-size: 20px;
+    font-weight: 600;
+}
