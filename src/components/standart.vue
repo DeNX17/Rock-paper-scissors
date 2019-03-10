@@ -24,6 +24,7 @@ import {mapActions} from 'vuex';
 import AppGame from '../components/game.vue';
 
 export default {
+		name: 'standart',
 		data () {
 			return {
 				show: false,

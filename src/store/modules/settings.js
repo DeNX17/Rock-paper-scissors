@@ -1,11 +1,11 @@
 export default {
 	namespaced: true,
 	state: {
-		colorBG: "url('../img/background.jpg')",
+		colorBG: "url('./img/background.jpg')",
 		arrColorBG: [
 			{
 				name: 'Image',
-				value: "url('../img/background.jpg')"
+				value: "url('./img/background.jpg')"
 			},
 			{
 				name: 'Белый',
