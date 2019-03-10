@@ -3,8 +3,9 @@
 		<p class="interfaceText" >Games: {{ historyGame.length }} 
 		<br> 
 		VICTORIES: {{ countStats.wins }} | DEFEATS: {{ countStats.loses }} </p>
+		<hr>
 		<p class="lastResult" v-show="show">{{ lastResult }}</p>
-		
+
 		<app-game :show="show"
 				  :srcImgPlayer="srcImgPlayer"
 				  :scrImgEnemy="scrImgEnemy"

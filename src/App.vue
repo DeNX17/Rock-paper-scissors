@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container App">
 		<div class="navigation">
 			<ul class="menu">
 				<li v-for="item in modes" @click="pickMode(item.value)" class="interfaceText">{{ item.name }}</li>
@@ -31,8 +31,7 @@ export default {
 		mounted(){ // Получение из локального хранилища цвета фона
 			if(window.localStorage.getItem("BGColor") !== null){
 				let color = window.localStorage.getItem("BGColor");
-				document.body.style.backgroundColor = color;
-				
+			
 				this.changeColorBG(color);
 			}
 		},
@@ -61,6 +60,5 @@ export default {
 
 </script>
 
-<style>
-	
+<style scoped> 
 </style>

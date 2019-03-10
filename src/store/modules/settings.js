@@ -1,11 +1,15 @@
 export default {
 	namespaced: true,
 	state: {
-		colorBG: 'white',
+		colorBG: "url('../img/background.jpg')",
 		arrColorBG: [
 			{
+				name: 'Image',
+				value: "url('../img/background.jpg')"
+			},
+			{
 				name: 'Белый',
-				value: 'white'
+				value: '#ffffff'
 			},
 			{
 				name: 'Серый',
@@ -30,7 +34,13 @@ export default {
 	mutations: {
 		changeColorBG(state, payload){
 			state.colorBG = payload;
-			document.body.style.backgroundColor = payload;
+			if(payload[0] === "#"){
+				document.body.style.backgroundImage = "";
+				document.body.style.backgroundColor = payload;
+			} else {
+				document.body.style.backgroundImage = payload;
+			}
+
 			window.localStorage.setItem("BGColor", payload);
 		}
 	},

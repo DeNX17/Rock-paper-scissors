@@ -6,6 +6,10 @@
 
 body {
     background-color: #EEEEEE;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 100% 100%;
     overflow: hidden;
     width: 100%;
     margin: 0 auto;
@@ -14,8 +18,14 @@ body {
 
 button {
     font-size: 18px;
-    background-color: #BDBDBD;
-    /*background-color: #273439;*/
+   /* background-color: #BDBDBD;*/
+   /* background-color: #273439;*/
+   background-color: #07123B;
+   color: white;
+   cursor: pointer;
+}
+button:hover {
+    opacity: 0.8;
 }
 
 img {
@@ -50,8 +60,16 @@ button {
 
 .lastResult {
     text-align: center;
-    color: #2980b9;
+    /*color: #2980b9;*/
+    color: black;
     font-size: 25px;
+}
+
+hr {
+    border: none;
+    background-color: black;
+    color: black;
+     height: 2px;
 }
 
 ul.menu {

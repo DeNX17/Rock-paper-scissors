@@ -67,7 +67,7 @@ export default {
 				if(this.historyBO3.wins >= 2){
 					this.btnShow = true;
 					this.$refs.resultBO3.style.opacity = 1;
-					return "You won";
+					return "You win";
 				}
 				if(this.historyBO3.loses >= 2){
 					this.btnShow = true;
@@ -88,5 +88,6 @@ export default {
 		opacity: 0;
 		height: 10px;
 		width: 100%;
+		font-size: 22px;
 	}
 </style>
