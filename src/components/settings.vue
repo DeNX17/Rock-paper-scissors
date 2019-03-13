@@ -21,11 +21,9 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
-
 	export default {
 		data(){
 			return {
-
 			}
 		},
 		mounted(){
@@ -48,7 +46,6 @@ import {mapActions} from 'vuex';
 				return window.localStorage.getItem("BGColor");
 			}
 		}
-
 	}
 </script>
 
@@ -63,7 +60,6 @@ import {mapActions} from 'vuex';
 		opacity: 0.7;
 		z-index: 10;
 	}
-
 	.blockSettings {
 		position: fixed;
 		width: 250px; 
@@ -75,7 +71,6 @@ import {mapActions} from 'vuex';
 		padding: 25px;
 		z-index: 11;
 	}
-
 	.close_button {
 		width: 21px;
 		height: 21px;
@@ -84,16 +79,13 @@ import {mapActions} from 'vuex';
 		right: 10%;
 		cursor: pointer;
 		display: block;
-
 	}
-
 	ul.settings li {
 		cursor: pointer;
 		font-size: 19px;
 		padding: 7px;
 		margin: 17px 0px;
 	}
-
 	.example {
 		width: 100%;
 	}

@@ -21,9 +21,7 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
-
 import AppGame from '../components/game.vue';
-
 export default {
 		data () {
 			return {
@@ -42,13 +40,11 @@ export default {
   			}),
   			pick(item){
   				this.showField = false;
-
   				setTimeout(() => {
   					this.srcImgPlayer = item.imgPlayer;
   					this.scrImgEnemy = item.imgComp;
   					this.showField = true;
   				}, 100)
-
   				this.show = true;
   			},
   			refresh() {
@@ -80,7 +76,6 @@ export default {
 			AppGame
 		}
 	}
-
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-import logic from './modules/file.js';
+import logic from './modules/logic.js';
 import settings from './modules/settings.js';
 
 export const store = new Vuex.Store({

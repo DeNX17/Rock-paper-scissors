@@ -24,7 +24,6 @@
 <script>
 	import {mapGetters} from 'vuex';
 	import {mapActions} from 'vuex';
-
 	export default {
 		props: {
 			srcImgPlayer: String, 
@@ -45,7 +44,6 @@
       pick(item){
         // Генерация выбора "бота"
         let computedPick = this.items[this.randomInteger(1, 3) - 1];
-
         this.$emit('pick', {
           imgPlayer: item.imgY,
           imgComp: computedPick.imgC
@@ -76,11 +74,9 @@
   height: 200px;
   width: 100%;
 }
-
 .game div {
   margin: 0px 10px;
 }
-
 .buttons {
   padding: 0px;
   margin: 0;

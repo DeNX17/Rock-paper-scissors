@@ -20,9 +20,7 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
-
 import AppGame from '../components/game.vue';
-
 export default {
 		name: 'standart',
 		data () {
@@ -49,7 +47,6 @@ export default {
   					this.scrImgEnemy = item.imgComp;
   					this.showField = true;
   				}, 100)
-
   				this.show = true;
   			},
   			...mapActions('logic', {
@@ -67,7 +64,6 @@ export default {
 					wins: 0,
 					loses: 0
 				};
-
 				for (let i = 0; i < this.historyGame.length; i++){
 					if(this.historyGame[i] == "Victory"){
 						stats.wins++;
@@ -87,7 +83,6 @@ export default {
 			AppGame
 		}
 	}
-
 </script>
 
 <style>
