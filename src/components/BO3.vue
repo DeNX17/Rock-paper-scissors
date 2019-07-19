@@ -3,17 +3,15 @@
 		<p class="interfaceText">Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
 		<p class="text resultBO3" ref="resultBO3">{{ resultBO3 }}</p>
 
-		<app-game :show="show"
-				  :srcImgPlayer="srcImgPlayer"
-				  :scrImgEnemy="scrImgEnemy"
+		<app-game :isRefreshBtnShow="isRefreshBtnShow"
+				  :srcImgs="srcImgs"
 				  :showField="showField"
 				  :mode="mode"
-				  :btnShow="btnShow"
 				  @pick="pick"
 				  >
 		</app-game>
 
-		<button @click="refresh" v-if="btnShow">Refresh</button>
+		<button @click="refresh" v-if="isRefreshBtnShow">Refresh</button>
 		
 	</div>
 </template>
@@ -21,14 +19,17 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
+
 import AppGame from '../components/game.vue';
 export default {
 		data () {
 			return {
 				show: false,
-				srcImgPlayer: '',
-				scrImgEnemy: '',
-				btnShow: false,
+				srcImgs: {
+					Player: '',
+					Bot: ''
+				},
+				isRefreshBtnShow: false,
 				showField: false,
 				mode: 'BO3'
 			}
@@ -36,37 +37,35 @@ export default {
 		methods: {
 			...mapActions('logic', {
   				checkResult: 'checkResult',
-  				RefreshScore: 'refresh'
+  				RefreshScore: 'restartBO3'
   			}),
   			pick(item){
   				this.showField = false;
   				setTimeout(() => {
-  					this.srcImgPlayer = item.imgPlayer;
-  					this.scrImgEnemy = item.imgComp;
+  					this.srcImgs.Player = item.imgPlayer;
+  					this.srcImgs.Bot = item.imgComp;
   					this.showField = true;
   				}, 100)
-  				this.show = true;
   			},
   			refresh() {
-          // Обновление счета в
+          // Обновление счета
   				this.RefreshScore();
-  				this.btnShow = false;
+  				this.isRefreshBtnShow = false;
   			}
 		},
 		computed: {
 			...mapGetters('logic', {
-				items: 'items',
 				historyBO3: 'getHistoryBO3'
 			}),
 			resultBO3(){
         // Определение победителя в игре
 				if(this.historyBO3.wins >= 2){
-					this.btnShow = true;
+					this.isRefreshBtnShow = true;
 					this.$refs.resultBO3.style.opacity = 1;
 					return "You win";
 				}
 				if(this.historyBO3.loses >= 2){
-					this.btnShow = true;
+					this.isRefreshBtnShow = true;
 					this.$refs.resultBO3.style.opacity = 1;
 					return "You lose";
 				}

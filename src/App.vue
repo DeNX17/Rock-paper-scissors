@@ -2,7 +2,12 @@
   <div class="container App">
     <div class="navigation">
       <ul class="menu">
-        <li v-for="item in modes" @click="pickMode(item.value)" class="interfaceText">{{ item.name }}</li>
+        <li v-for="(item, index) in modes"
+            :key="index"
+            @click="pickMode(item.value)" 
+            class="interfaceText">
+          {{ item.name }}
+        </li>
         <li @click="showSettings = true" class="interfaceText">Settings</li>
       </ul>
     </div>

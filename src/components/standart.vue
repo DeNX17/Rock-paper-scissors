@@ -6,9 +6,8 @@
 		<hr>
 		<p class="lastResult" v-show="show">{{ lastResult }}</p>
 
-		<app-game :show="show"
-				  :srcImgPlayer="srcImgPlayer"
-				  :scrImgEnemy="scrImgEnemy"
+		<app-game
+				  :srcImgs="srcImgs"
 				  :showField="showField"
 				  :mode="mode"
 				  @pick="pick"
@@ -20,14 +19,18 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
+
 import AppGame from '../components/game.vue';
+
 export default {
 		name: 'standart',
 		data () {
 			return {
 				show: false,
-				srcImgPlayer: '',
-				scrImgEnemy: '',
+				srcImgs: {
+					Player: '',
+					Bot: ''
+				},
 				showField: false,
 				mode: 'Standart'
 			}
@@ -40,14 +43,14 @@ export default {
 		},
 		methods: {
   			pick(item){
-  				this.showField = false;
+					this.showField = false;
+					
 					// Плавная анимация появления картинок
   				setTimeout(() => {
-  					this.srcImgPlayer = item.imgPlayer;
-  					this.scrImgEnemy = item.imgComp;
+  					this.srcImgs.Player = item.imgPlayer;
+  					this.srcImgs.Bot = item.imgComp;
   					this.showField = true;
   				}, 100)
-  				this.show = true;
   			},
   			...mapActions('logic', {
   				checkResult: 'checkResult',
@@ -56,7 +59,6 @@ export default {
 		},
 		computed: {
 			...mapGetters('logic', {
-				items: 'items',
 				historyGame: 'getHistoryGame'
 			}),
 			countStats(){		

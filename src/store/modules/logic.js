@@ -1,7 +1,7 @@
 export default {
 	namespaced: true,
 	state: {
-		items: [
+		RPSArr: [
 			{
 				name: 'Rock',
 				imgY: './img/YRock.png',
@@ -32,8 +32,8 @@ export default {
 		historyBO3: []
 	},
 	getters: {
-		items(state) {
-			return state.items;
+		RPSArr(state) {
+			return state.RPSArr;
 		},
 		getHistoryGame(state) {
 			return state.historyGame;
@@ -60,7 +60,7 @@ export default {
 	},
 	mutations: {
 		checkResult(state, payload) {
-			let result = '';
+			let result = "";
 
 			if(payload.player == "Rock"){
 				switch(payload.comp){
@@ -112,7 +112,7 @@ export default {
   				window.localStorage.setItem("history", state.historyGame);
   			}
 		},
-		refresh(state) {
+		restartBO3(state) {
 			state.historyBO3 = [];
 		},
 		writeHistory(state, payload) {
@@ -123,8 +123,8 @@ export default {
 		checkResult(store, payload) {
 			store.commit('checkResult', payload)
 		},
-		refresh(store) {
-			store.commit('refresh');
+		restartBO3(store) {
+			store.commit('restartBO3');
 		},
 		writeHistory(store, payload) {
 			store.commit('writeHistory', payload);

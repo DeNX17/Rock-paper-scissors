@@ -3,19 +3,22 @@
 		<div class="game">
 			<div class="my">
 				<transition name="player">
-					<img :src="srcImgPlayer" alt="Не загрузилось" v-show="showField"  class="imgGame">
+					<img :src="srcImgs.Player" alt="Не загрузилось" v-show="showField"  class="imgGame">
 				</transition>
 			</div>
 			<div class="enemy">
 				<transition name="comp">
-					<img :src="scrImgEnemy" alt="Не загрузилось"  v-show="showField" class="imgGame">
+					<img :src="srcImgs.Bot" alt="Не загрузилось"  v-show="showField" class="imgGame">
 				</transition>
 			</div>
 		</div>
 
 		<div class="buttons">
-			<button v-for="item in items" @click="pick(item)" v-show="!btnShow">
-				{{ item.name }}
+			<button v-for="(button, index) in RPSArr"
+							:key="index"
+							@click="pick(button)" 
+							v-show="!isRefreshBtnShow">
+				{{ button.name }}
 			</button>
 		</div>
 	</div>
@@ -24,26 +27,24 @@
 <script>
 	import {mapGetters} from 'vuex';
 	import {mapActions} from 'vuex';
+
 	export default {
 		props: {
-			srcImgPlayer: String, 
-			scrImgEnemy: String,
+			srcImgs: null,
 			showField: Boolean,
 			mode: String,
-			btnShow: Boolean
+			isRefreshBtnShow: Boolean
+		},
+		mounted () {
 		},
 		methods: {
 			...mapActions('logic', {
 				checkResult: 'checkResult'
 			}),
-			randomInteger(min, max) {
-	    	let rand = min - 0.5 + Math.random() * (max - min + 1)
-	    	rand = Math.round(rand);
-	    	return rand;
-  		},
       pick(item){
-        // Генерация выбора "бота"
-        let computedPick = this.items[this.randomInteger(1, 3) - 1];
+				// Генерация выбора "бота"
+				let computedPick = this.RPSArr[randomInteger(1, 3) - 1];
+				
         this.$emit('pick', {
           imgPlayer: item.imgY,
           imgComp: computedPick.imgC
@@ -59,7 +60,7 @@
 		},
 		computed: {
 			...mapGetters('logic', {
-				items: 'items'
+				RPSArr: 'RPSArr'
 			})
 		}
 	}
