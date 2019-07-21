@@ -1,14 +1,20 @@
 <template>
 	<div>
+		<div class="Interface">
+			<p>Player:</p>
+			<p>Bot:</p>
+		</div>
+
 		<div class="game">
 			<div class="my">
 				<transition name="player">
-					<img :src="srcImgs.Player" alt="Не загрузилось" v-show="showField"  class="imgGame">
+					<img :src="srcImgs.Player" alt="Don't load" v-show="showField" class="imgGame">
 				</transition>
 			</div>
-			<div class="enemy">
+
+			<div class="Bot">
 				<transition name="comp">
-					<img :src="srcImgs.Bot" alt="Не загрузилось"  v-show="showField" class="imgGame">
+					<img :src="srcImgs.Bot" alt="Don't load"  v-show="showField" class="imgGame">
 				</transition>
 			</div>
 		</div>
@@ -68,11 +74,22 @@
 
 
 <style scoped>
+.Interface {
+	display: flex;
+	justify-content: space-around;
+	font-family: 'Muli', sans-serif;
+	/*
+	font-family: 'Muli', sans-serif;
+	font-family: 'Slabo 27px', serif;
+	font-family: 'Titillium Web', sans-serif;
+	*/
+}
+
 .game {
   display: flex;
   justify-content: space-around;
   padding: 0px 5px;
-  height: 200px;
+  height: 270px;
   width: 100%;
 }
 .game div {
@@ -81,5 +98,9 @@
 .buttons {
   padding: 0px;
   margin: 0;
+}
+
+p {
+	font-size: 30px;
 }
 </style>

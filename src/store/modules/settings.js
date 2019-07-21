@@ -8,26 +8,24 @@ export default {
 				value: "url('./img/background.jpg')"
 			},
 			{
-				name: 'Белый',
+				name: 'White',
 				value: '#ffffff'
 			},
 			{
-				name: 'Серый',
+				name: 'Grey',
 				value: '#EEEEEE'
 			},
 			{
-				name: 'Темно-серый',
+				name: 'Dark grey',
 				value: '#57606f'
 			}
 		]
 	},
 	getters: {
 		colorBG(state){
-			// Получение текующего цвета
 			return state.colorBG;
 		},
 		arrColorBG(state){
-			// Получение списка всех цветов
 			return state.arrColorBG;
 		}
 	},
@@ -48,7 +46,8 @@ export default {
 		changeColorBG(store, payload){
 			store.commit('changeColorBG', payload);
 		},
-		resetHistory(store){ // Удаление истории игр из локального хранилища
+		resetHistory(store){ 
+			// Удаление истории игр из локального хранилища
 			window.localStorage.removeItem("history");
 			window.location.reload();
 		}

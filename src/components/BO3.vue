@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<p class="interfaceText">Победы: {{ historyBO3.wins }} / Поражения: {{ historyBO3.loses }}</p>
-		<p class="text resultBO3" ref="resultBO3">{{ resultBO3 }}</p>
+		<p class="interfaceText">VICTORIES: {{ historyBO3.wins }} &nbsp; &nbsp; / &nbsp; &nbsp; DEFEATS: {{ historyBO3.loses }}</p>
+		<hr>
+		<p :class="'text resultBO3 '+resultBO3" ref="resultBO3"></p>
 
 		<app-game :isRefreshBtnShow="isRefreshBtnShow"
 				  :srcImgs="srcImgs"
@@ -11,8 +12,7 @@
 				  >
 		</app-game>
 
-		<button @click="refresh" v-if="isRefreshBtnShow">Refresh</button>
-		
+		<button @click="refresh" v-if="isRefreshBtnShow">Restart</button>
 	</div>
 </template>
 
@@ -50,7 +50,7 @@ export default {
   			refresh() {
           // Обновление счета
   				this.RefreshScore();
-  				this.isRefreshBtnShow = false;
+					this.isRefreshBtnShow = false;
   			}
 		},
 		computed: {
@@ -62,12 +62,12 @@ export default {
 				if(this.historyBO3.wins >= 2){
 					this.isRefreshBtnShow = true;
 					this.$refs.resultBO3.style.opacity = 1;
-					return "You win";
+					return "resultWin";
 				}
 				if(this.historyBO3.loses >= 2){
 					this.isRefreshBtnShow = true;
 					this.$refs.resultBO3.style.opacity = 1;
-					return "You lose";
+					return "resultLose";
 				}
 			}
 		},
@@ -82,6 +82,18 @@ export default {
 		opacity: 0;
 		height: 10px;
 		width: 100%;
-		font-size: 22px;
+		font-size: 26px;
+		font-weight: 600;
+		text-align: center;
+	}
+
+	.resultLose::before {
+		content: "YOU LOSE";
+		color:red;
+	}
+
+	.resultWin::before {
+		content: "YOU WIN";
+		color:lime;
 	}
 </style>

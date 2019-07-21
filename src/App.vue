@@ -2,17 +2,17 @@
   <div class="container App">
     <div class="navigation">
       <ul class="menu">
-        <li v-for="(item, index) in modes"
+        <li v-for="(mode, index) in modes"
             :key="index"
-            @click="pickMode(item.value)" 
+            @click="pickMode(mode.value)" 
             class="interfaceText">
-          {{ item.name }}
+          {{ mode.name }}
         </li>
         <li @click="showSettings = true" class="interfaceText">Settings</li>
       </ul>
     </div>
-    <app-type-standart v-if="show == 1"></app-type-standart>
-    <app-type-three v-if="show == 2"></app-type-three>
+    <app-type-standart v-if="showModeComponent == 1"></app-type-standart>
+    <app-type-three v-if="showModeComponent == 2"></app-type-three>
     <app-setting v-show="showSettings" @closeSettings="onCloseSettings"></app-setting> 
   </div>
 </template>
@@ -20,6 +20,7 @@
 <script>
 import {mapGetters} from 'vuex';
 import {mapActions} from 'vuex';
+
 import AppTypeStandart from './components/standart.vue';
 import AppTypeThree from './components/BO3.vue';
 import AppSetting from './components/settings.vue';
@@ -27,7 +28,7 @@ import AppSetting from './components/settings.vue';
 export default {
     data () {
       return {
-        show: 1,
+        showModeComponent: 1,
         showSettings: false
       }
     },
@@ -42,8 +43,8 @@ export default {
       ...mapActions('settings', {
         changeColorBG: 'changeColorBG'
       }),
-      pickMode(value){
-        this.show = value;
+      pickMode(modeValue){
+        this.showModeComponent = modeValue;
       },
       onCloseSettings(){
         this.showSettings = false;
@@ -61,6 +62,3 @@ export default {
     }
   }
 </script>
-
-<style scoped> 
-</style>
